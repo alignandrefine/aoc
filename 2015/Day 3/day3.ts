@@ -10,15 +10,15 @@ export function houseCount(directions: string): number {
 
     for (let i = 0; i < array.length; i++) {
         const mover = i % 2 === 0 ? santaPosition : roboSantaPosition;
+
         switch (array[i]) {
-            case '^': mover[1] +=1; break;
-            case '>': mover[0] +=1; break;
-            case 'v': mover[1] -=1; break;
-            case '<': mover[0] -=1; break;
+            case '^': mover[1] += 1; break;
+            case '>': mover[0] += 1; break;
+            case 'v': mover[1] -= 1; break;
+            case '<': mover[0] -= 1; break;
         }
 
-        const stop = `${mover[0]},${mover[1]}`;
-        stops.add(stop);
+        stops.add(`${mover[0]},${mover[1]}`);
     }
 
     return stops.size;
