@@ -9,14 +9,15 @@ export function houseCount(directions: string): number {
     stops.add('0,0');
 
     for (let i = 0; i < array.length; i++) {
+        const mover = i % 2 === 0 ? santaPosition : roboSantaPosition;
         switch (array[i]) {
-            case '^': Math.abs(i % 2) === 1 ? santaPosition[1] += 1 : roboSantaPosition[1] +=1; break;
-            case '>': Math.abs(i % 2) === 1 ? santaPosition[0] += 1 : roboSantaPosition[0] +=1; break;
-            case 'v': Math.abs(i % 2) === 1 ? santaPosition[1] -= 1 : roboSantaPosition[1] -=1; break;
-            case '<': Math.abs(i % 2) === 1 ? santaPosition[0] -= 1 : roboSantaPosition[0] -=1; break;
+            case '^': mover[1] +=1; break;
+            case '>': mover[0] +=1; break;
+            case 'v': mover[1] -=1; break;
+            case '<': mover[0] -=1; break;
         }
 
-        const stop = Math.abs(i % 2) === 1 ? `${santaPosition[0]},${santaPosition[1]}` : `${roboSantaPosition[0]},${roboSantaPosition[1]}`;
+        const stop = `${mover[0]},${mover[1]}`;
         stops.add(stop);
     }
 
